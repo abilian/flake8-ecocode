@@ -1,18 +1,16 @@
-# flake8_avoid_try_with_open.py
-
 import ast
+from dataclasses import dataclass
+
+from ._base import Visitor
 
 MESSAGE = "EC35: Avoid the use of try-except with a file open() in the try block."
 
 
-class EC35(ast.NodeVisitor):
+@dataclass(frozen=True)
+class EC35(Visitor):
     """
     Flake8 plugin to check for try-except blocks that contain open() calls.
     """
-
-    def __init__(self, tree):
-        self.tree = tree
-        self.errors = []
 
     def visit_Try(self, node):
         """
@@ -30,7 +28,7 @@ class EC35(ast.NodeVisitor):
         """
         if isinstance(node, ast.Call):
             if self.is_open_call(node):
-                self.errors.append((node.lineno, node.col_offset, MESSAGE))
+                self.report(node, MESSAGE)
         else:
             # Recursively check child nodes for a call to open()
             for child in ast.iter_child_nodes(node):

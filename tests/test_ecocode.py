@@ -26,7 +26,8 @@ def test_ec404_bad():
 
 
 def test_c35_bad():
-    s = dedent("""
+    s = dedent(
+        """
     try:
         f = open(path)
         print(fh.read())
@@ -34,7 +35,8 @@ def test_c35_bad():
         print('No such file '+path)
     finally:
         f.close()
-    """).strip()
+    """
+    ).strip()
     run_test(s, ["EC35"])
 
 
