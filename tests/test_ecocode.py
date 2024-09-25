@@ -10,11 +10,11 @@ from flake8_ecocode import EcocodePlugin as Plugin
 
 @pytest.mark.parametrize(
     "s",
-    (
+    [
         "",
         "print('hello')",
         "for var in (var2 for var2 in range(100)): ...",
-    ),
+    ],
 )
 def test_ok(s):
     run_test(s, [])

@@ -13,6 +13,14 @@ lint.extend-ignore = [
     #  More specific
     # "COM812", # Missing trailing comma
     # "CPY001", # Missing copyright header
-    # "E501", # Line too long
     # "I001", # Import block is un-sorted or un-formatted
+    "S101",
+    "D",
+    "ANN",
+    "A005",
+    "DOC",
+    "CPY",
+    "N802", # function name should be lowercase
+    "E501", # Line too long
+    "ERA001", # commented-out code
 ]
