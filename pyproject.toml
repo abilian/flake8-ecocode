@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Stefane Fermigier <sf@abilian.com>"]
 readme = "README.md"
-license = "Apache-2.0"
+license = "GPL-3.0"
 
 packages = [
     { include = "flake8_ecocode", from = "src" },
