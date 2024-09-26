@@ -3,13 +3,13 @@ from __future__ import annotations
 import ast
 from dataclasses import dataclass
 
-from ._base import Visitor
+from .base import Rule
 
 MESSAGE = "EC404: Use generator comprehension instead of list comprehension in for loop declaration."
 
 
 @dataclass(frozen=True)
-class EC404(Visitor):
+class EC404(Rule):
     """Flake8 rule to check for list comprehensions inside for loops."""
 
     def visit_For(self, node: ast.For):

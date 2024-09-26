@@ -3,13 +3,13 @@ from __future__ import annotations
 import ast
 from dataclasses import dataclass
 
-from ._base import Visitor
+from .base import Rule
 
 MESSAGE = "EC35: Avoid the use of try-except with a file open() in the try block."
 
 
 @dataclass(frozen=True)
-class EC35(Visitor):
+class EC35(Rule):
     """
     Flake8 rule to check for try-except blocks that contain open() calls.
     """

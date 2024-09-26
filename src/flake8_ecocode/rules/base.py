@@ -7,7 +7,7 @@ from flake8_ecocode.types import FlakeError
 
 
 @dataclass(frozen=True)
-class Visitor(ast.NodeVisitor):
+class Rule(ast.NodeVisitor):
     """Base class for visitors."""
 
     tree: ast.AST
