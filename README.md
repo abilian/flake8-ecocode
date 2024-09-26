@@ -6,6 +6,10 @@ A port to Python of the Python-specific parts of [ecoCode](https://github.com/gr
 
 Java Code has been converted to Python, using the `ast` module.
 
+## What is ecoCode?
+
+ecoCode is a collective project aiming to reduce environmental footprint of software at the code level. The goal of the project is to provide a list of static code analyzers to highlight code structures that may have a negative ecological impact: energy and resources over-consumption, "fatware", shortening terminals' lifespan, etc.
+
 ## Installation
 
 ```bash
