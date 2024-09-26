@@ -1,4 +1,6 @@
-from typing import Iterator
+from __future__ import annotations
+
+from collections.abc import Iterator
 
 from .rules.ec_35 import EC35
 from .rules.ec_404 import EC404
@@ -25,5 +27,4 @@ class EcocodePlugin:
         for checker_class in CHECKERS:
             checker = checker_class(self.tree)
             checker.visit(self.tree)
-            for error in checker.errors:
-                yield error
+            yield from checker.errors

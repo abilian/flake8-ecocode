@@ -1,4 +1,4 @@
-# Flake8 error type: (line number, column, warning message, caller type)
-from typing import Tuple
+from __future__ import annotations
 
-FlakeError = Tuple[int, int, str, type]
+# Flake8 error type: (line number, column, warning message, caller type)
+FlakeError = tuple[int, int, str, type]

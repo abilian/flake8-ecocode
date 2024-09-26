@@ -28,14 +28,14 @@ def test_ec404_bad():
 def test_c35_bad():
     s = dedent(
         """
-    try:
-        f = open(path)
-        print(fh.read())
-    except:
-        print('No such file '+path)
-    finally:
-        f.close()
-    """
+        try:
+            f = open(path)
+            print(fh.read())
+        except:
+            print('No such file '+path)
+        finally:
+            f.close()
+        """
     ).strip()
     run_test(s, ["EC35"])
 

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import ast
 from dataclasses import dataclass
 
@@ -8,7 +10,7 @@ MESSAGE = "EC404: Use generator comprehension instead of list comprehension in f
 
 @dataclass(frozen=True)
 class EC404(Visitor):
-    """Flake8 plugin to check for list comprehensions inside for loops."""
+    """Flake8 rule to check for list comprehensions inside for loops."""
 
     def visit_For(self, node: ast.For):
         """Check for list comprehensions in the 'for' loop declaration."""
@@ -27,13 +29,15 @@ class EC404(Visitor):
         function_name = self.get_function_name(node)
 
         # Check if the function is one of the problematic functions (e.g., zip, filter, enumerate)
-        if function_name in {"zip", "filter", "enumerate"}:
-            for arg in node.args:
-                match arg:
-                    case ast.ListComp():
-                        self.report(arg, MESSAGE)
-                    case ast.Call():
-                        self.visit_Call(arg)
+        if function_name not in {"zip", "filter", "enumerate"}:
+            return
+
+        for arg in node.args:
+            match arg:
+                case ast.ListComp():
+                    self.report(arg, MESSAGE)
+                case ast.Call():
+                    self.visit_Call(arg)
 
     def get_function_name(self, node: ast.Call) -> str:
         """Helper method to extract the function name from a Call node."""
@@ -42,4 +46,5 @@ class EC404(Visitor):
                 return name
             case ast.Attribute(attr=name):
                 return name
-        return ""
+            case _:
+                return ""

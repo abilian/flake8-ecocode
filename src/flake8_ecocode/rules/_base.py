@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import ast
 from dataclasses import dataclass, field
 
@@ -12,4 +14,4 @@ class Visitor(ast.NodeVisitor):
     errors: list[FlakeError] = field(default_factory=list)
 
     def report(self, node: ast.AST, message: str):
-        self.errors.append((node.lineno, node.col_offset, message, type(self)))
+        self.errors.append((node.lineno, node.col_offset, message, type(self)))  # type: ignore[attr-defined]
