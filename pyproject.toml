@@ -5,6 +5,8 @@ description = ""
 authors = ["Stefane Fermigier <sf@abilian.com>"]
 readme = "README.md"
 license = "GPL-3.0"
+homepage = "https://github.com/abilian/flake8-ecocode"
+repository = "https://github.com/abilian/flake8-ecocode"
 
 packages = [
     { include = "flake8_ecocode", from = "src" },
