@@ -1,30 +1,28 @@
-[tool.poetry]
+[project]
 name = "flake8-ecocode"
-version = "0.1.2"
-description = ""
-authors = ["Stefane Fermigier <sf@abilian.com>"]
+version = "0.1.3"
+description = "Ecocode plugin for Flask8"
 readme = "README.md"
+requires-python = ">=3.10,<4.0"
 license = "GPL-3.0"
-homepage = "https://github.com/abilian/flake8-ecocode"
-repository = "https://github.com/abilian/flake8-ecocode"
-
-packages = [
-    { include = "flake8_ecocode", from = "src" },
+authors = [
+    { name = "Stefane Fermigier", email = "sf@abilian.com" },
+]
+dependencies = [
+    "flake8>=7.1.1,<8.0.0",
+    "devtools>=0.12.2,<0.13.0",
 ]
 
-[tool.poetry.dependencies]
-python = "^3.10"
-flake8 = "^7.1.1"
-devtools = "^0.12.2"
-
-[tool.poetry.plugins."flake8.extension"]
-EC = "flake8_ecocode:EcocodePlugin"
-
-
-[tool.poetry.group.dev.dependencies]
-abilian-devtools = "^0.6.4"
-nox = "^2024.4.15"
+[project.urls]
+Homepage = "https://github.com/abilian/flake8-ecocode"
+Repository = "https://github.com/abilian/flake8-ecocode"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+dev-dependencies = [
+    "abilian-devtools>=0.6.4,<0.7.0",
+    "nox>=2024.4.15,<2025.0.0",
+]
